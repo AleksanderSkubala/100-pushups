@@ -45,11 +45,11 @@ export default {
       will-change: opacity;
     }
 
-    &:hover::before {
+    &:hover::before, &:active::before {
       opacity: 1;
     }
 
-    &:hover {
+    &:hover, &:active {
       color: white;
     }
   }

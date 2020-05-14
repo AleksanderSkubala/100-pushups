@@ -13,14 +13,19 @@
         </tr>
       </tbody>
     </table>
+    <Button @click.native="deletePlan()" text="Delete your training plan"></Button>
   </div>
 </template>
 
 <script>
 import { format } from 'date-fns';
+import Button from './Button.vue';
 
 export default {
   name: 'Schedule',
+  components: {
+    Button,
+  },
   data() {
     return {
       plan: JSON.parse(localStorage.getItem('trainingPlan')),
@@ -28,6 +33,11 @@ export default {
     };
   },
   methods: {
+    deletePlan() {
+      localStorage.clear();
+      this.$emit('deletePlan');
+      window.location = '';
+    },
     getRest() {
       switch (this.plan.indexOf(this.training)) {
         default:

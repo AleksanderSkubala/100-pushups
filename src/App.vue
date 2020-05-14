@@ -2,7 +2,7 @@
   <div class="outerWrapper">
     <div class="innerWrapper">
       <Planner v-show="trainingPlan.length == 0" @makePlan="makePlan"></Planner>
-      <Schedule v-show="trainingPlan.length > 0"></Schedule>
+      <Schedule v-show="trainingPlan.length > 0" @deletePlan="deletePlan"></Schedule>
       <Footer></Footer>
     </div>
   </div>
@@ -31,6 +31,9 @@ export default {
     makePlan(reps) {
       this.trainingPlan = new Training(reps).makePlan;
       localStorage.setItem('trainingPlan', JSON.stringify(this.trainingPlan));
+    },
+    deletePlan() {
+      this.trainingPlan = [];
     },
   },
   mounted() {
