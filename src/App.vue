@@ -2,6 +2,9 @@
   <div class="outerWrapper">
     <div class="innerWrapper">
       <Planner v-show="!trainingPlan" @makePlan="makePlan"></Planner>
+      <div v-show="trainingPlan" v-once>
+       {{ trainingPlan }}
+      </div>
       <Footer></Footer>
     </div>
   </div>
@@ -10,6 +13,7 @@
 <script>
 import Footer from './components/Footer.vue';
 import Planner from './components/Planner.vue';
+import Training from './assets/pushups';
 
 export default {
   name: 'App',
@@ -24,11 +28,12 @@ export default {
   },
   methods: {
     makePlan(reps) {
-      console.log(reps);
+      this.trainingPlan = new Training(reps).makePlan;
+      localStorage.setItem('trainingPlan', JSON.stringify(this.trainingPlan));
     },
   },
   mounted() {
-    this.trainingPlan = localStorage.getItem('trainingPlan') ? localStorage.getItem('trainingPlan') : '';
+    this.trainingPlan = localStorage.getItem('trainingPlan') ? JSON.parse(localStorage.getItem('trainingPlan')) : '';
   },
 };
 </script>
