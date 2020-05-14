@@ -51,7 +51,6 @@ export default {
    width: 100vw;
    min-height: 100vh;
    background-color: whitesmoke;
-   /* overflow: auto; */
    font-family: 'Montserrat', sans-serif;
    display: flex;
    justify-content: center;

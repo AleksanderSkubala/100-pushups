@@ -3,9 +3,15 @@
     <h1>Training for today:</h1>
     <p v-show="!training">There is no training this day, take some rest ;D</p>
     <table v-if="training">
-      <tr v-for="rep in training.reps" :key="rep">
-        <th>{{ rep }}</th>
-      </tr>
+      <thead>
+        <th colspan="2">{{ this.getRest() }} of rest between sets </th>
+      </thead>
+      <tbody>
+        <tr v-for="(rep, index) in training.reps" :key="index">
+          <th>set {{ index+1 }}</th>
+          <th>{{ rep }} reps</th>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -21,10 +27,27 @@ export default {
       training: '',
     };
   },
+  methods: {
+    getRest() {
+      switch (this.plan.indexOf(this.training)) {
+        default:
+          return '60 s';
+
+        case (1):
+        case (4):
+          return '90 s';
+
+        case (2):
+        case (5):
+          return '2 min';
+      }
+    },
+  },
   mounted() {
-    const today = format(new Date('2020-05-16T10:29:31.844Z'), 'MM/dd/yyyy');
-    // const today = format(new Date(), 'MM/dd/yyyy');
-    this.training = this.plan.find((object) => object.date === today);
+    if (this.plan) {
+      const today = format(new Date(), 'MM/dd/yyyy');
+      this.training = this.plan.find((object) => object.date === today);
+    }
   },
 };
 </script>
