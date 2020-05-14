@@ -1,32 +1,78 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="outerWrapper">
+    <div class="innerWrapper">
+      <Planner v-show="!trainingPlan" @makePlan="makePlan"></Planner>
+      <Footer></Footer>
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script>
+import Footer from './components/Footer.vue';
+import Planner from './components/Planner.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Footer,
+    Planner,
+  },
+  data() {
+    return {
+      trainingPlan: '',
+    };
+  },
+  methods: {
+    makePlan(reps) {
+      console.log(reps);
+    },
+  },
+  mounted() {
+    this.trainingPlan = localStorage.getItem('trainingPlan') ? localStorage.getItem('trainingPlan') : '';
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  body {
+    margin: 0;
+    padding: 0;
   }
-}
+
+ .outerWrapper{
+   width: 100vw;
+   min-height: 100vh;
+   background-color: whitesmoke;
+   /* overflow: auto; */
+   font-family: 'Montserrat', sans-serif;
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   z-index: -1;
+ }
+
+ .innerWrapper {
+   width: 90%;
+   max-height: 90vh;
+   height: 100%;
+   height: auto;
+   margin-top: 5%;
+   background-color: white;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
+
+   &::before {
+     content: '';
+     width: 100vw;
+     height: 15vh;
+     background-color:  #FFAD32;
+     position: absolute;
+     z-index: -1;
+     top: 0;
+     left: 0;
+   }
+ }
 </style>
