@@ -1,29 +1,30 @@
 <template>
   <div class="outerWrapper">
     <div class="innerWrapper">
-      <Planner v-show="!trainingPlan" @makePlan="makePlan"></Planner>
-      <div v-show="trainingPlan" v-once>
-       {{ trainingPlan }}
-      </div>
+      <Planner v-show="trainingPlan.length == 0" @makePlan="makePlan"></Planner>
+      <Schedule v-show="trainingPlan.length > 0"></Schedule>
       <Footer></Footer>
     </div>
   </div>
 </template>
 
 <script>
+import Training from './assets/pushups';
+
 import Footer from './components/Footer.vue';
 import Planner from './components/Planner.vue';
-import Training from './assets/pushups';
+import Schedule from './components/Schedule.vue';
 
 export default {
   name: 'App',
   components: {
     Footer,
     Planner,
+    Schedule,
   },
   data() {
     return {
-      trainingPlan: '',
+      trainingPlan: [],
     };
   },
   methods: {
@@ -33,7 +34,7 @@ export default {
     },
   },
   mounted() {
-    this.trainingPlan = localStorage.getItem('trainingPlan') ? JSON.parse(localStorage.getItem('trainingPlan')) : '';
+    this.trainingPlan = localStorage.getItem('trainingPlan') ? JSON.parse(localStorage.getItem('trainingPlan')) : [];
   },
 };
 </script>

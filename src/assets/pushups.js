@@ -1,4 +1,4 @@
-import addDays from 'date-fns/addDays';
+import { addDays, format } from 'date-fns';
 import trainings from './_trainings';
 
 export default class Training {
@@ -57,7 +57,7 @@ export default class Training {
     plans.map((plan) => {
       plan.map((day) => {
         const newDay = day;
-        newDay.date = addDays(currentDate, dayCounter);
+        newDay.date = format(addDays(currentDate, dayCounter), 'MM/dd/yyyy');
         trainingPlan.push(newDay);
         dayCounter += 2;
         return 0;
@@ -70,5 +70,3 @@ export default class Training {
     return trainingPlan;
   }
 }
-
-// console.log(new Training(2).makePlan);
