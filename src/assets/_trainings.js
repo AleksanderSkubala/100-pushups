@@ -12,6 +12,30 @@ const trainings = [
       done: false,
       reps: [8, 9, 7, 7, 8],
     },
+    {
+      day: 3,
+      plan: 0,
+      done: false,
+      reps: [8, 9, 7, 7, 8],
+    },
+    {
+      day: 4,
+      plan: 0,
+      done: false,
+      reps: [8, 9, 7, 7, 8],
+    },
+    {
+      day: 5,
+      plan: 0,
+      done: false,
+      reps: [8, 9, 7, 7, 8],
+    },
+    {
+      day: 6,
+      plan: 0,
+      done: false,
+      reps: [8, 9, 7, 7, 8],
+    },
   ],
   [
     {

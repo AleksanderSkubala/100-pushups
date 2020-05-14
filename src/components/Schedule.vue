@@ -4,12 +4,15 @@
     <p v-show="!training">There is no training this day, take some rest ;D</p>
     <table v-if="training">
       <thead>
-        <th colspan="2">{{ this.getRest() }} of rest between sets </th>
+        <th colspan="2" v-once>{{ getRest() }} of rest between sets </th>
       </thead>
       <tbody>
         <tr v-for="(rep, index) in training.reps" :key="index">
           <th>set {{ index+1 }}</th>
           <th>{{ rep }} reps</th>
+        </tr>
+        <tr>
+          <th colspan="2" v-once>Take {{ restDay() }} rest</th>
         </tr>
       </tbody>
     </table>
@@ -51,6 +54,13 @@ export default {
         case (5):
           return '2 min';
       }
+    },
+    restDay() {
+      if (this.plan.indexOf(this.training) === 2 || this.plan.indexOf(this.training) === 5) {
+        return '2 days';
+      }
+
+      return '1 day';
     },
   },
   mounted() {
