@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     if (this.plan) {
-      const today = format(new Date(), 'MM/dd/yyyy');
+      const today = format(new Date('05/16/2020'), 'MM/dd/yyyy');
       this.training = this.plan.find((object) => object.date === today);
     }
   },
@@ -69,6 +69,20 @@ export default {
     h1 {
       color: #FFAD32;
       font-size: 1.75em;
+    }
+
+    table {
+      border-collapse: collapse;
+
+      th {
+        padding: 10px;
+        border: 1px solid black;
+      }
+    }
+
+
+    button {
+      margin-top: 25px;
     }
   }
 </style>

@@ -59,7 +59,7 @@ export default {
       margin-top: 20px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 425px) {
       .inputs {
         display: inline;
 
