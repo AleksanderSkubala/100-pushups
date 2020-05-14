@@ -4,7 +4,8 @@ This is simple app that helps you in pushups trainings. You can make training pl
 
 ## Link
 
-Link for app: x
+Link for app: https://100pushups.ga
+(https://100-pushups.now.sh)
 
 ## Installation
 
