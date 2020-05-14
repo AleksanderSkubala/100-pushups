@@ -1,8 +1,10 @@
 <template>
   <div class="planner">
     <h1>Type how many pushups can you make?</h1>
-    <input name="reps" v-model="reps" placeholder="number of reps">
-    <Button @click.native="handleClick()" text="Make training plan"></Button>
+    <div class="inputs">
+      <input name="reps" v-model="reps" placeholder="number of reps">
+      <Button @click.native="handleClick()" text="Make training plan"></Button>
+    </div>
   </div>
 </template>
 
@@ -39,6 +41,12 @@ export default {
       font-size: 1.75em;
     }
 
+    .inputs {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
     input {
       font-family: 'Montserrat', sans-serif;
       font-size: 1em;
@@ -49,6 +57,20 @@ export default {
 
     button {
       margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .inputs {
+        display: inline;
+
+        input {
+          width: 40%;
+        }
+
+        button {
+          margin-left: 25px;
+        }
+      }
     }
   }
 </style>
