@@ -2,13 +2,18 @@
   <div class="planner">
     <h1>Type how many pushups can you make?</h1>
     <input name="reps" v-model="reps" placeholder="number of reps">
-    <button @click="handleClick()">Make training plan</button>
+    <Button @click.native="handleClick()" text="Make training plan"></Button>
   </div>
 </template>
 
 <script>
+import Button from './Button.vue';
+
 export default {
   name: 'Planner',
+  components: {
+    Button,
+  },
   data() {
     return {
       reps: '',
