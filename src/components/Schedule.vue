@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     if (this.plan) {
-      const today = format(new Date('05/16/2020'), 'MM/dd/yyyy');
+      const today = format(new Date('05/18/2020'), 'MM/dd/yyyy');
       this.training = this.plan.find((object) => object.date === today);
     }
   },

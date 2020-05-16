@@ -2,8 +2,9 @@ import { addDays, format } from 'date-fns';
 import trainings from './_trainings';
 
 export default class Training {
-  constructor(initialPushups = 0) {
+  constructor(initialPushups = 0, createdPlan = []) {
     this.initialPushups = initialPushups;
+    this.createdPlan = createdPlan;
   }
 
   getPlanNumber() {
@@ -65,6 +66,25 @@ export default class Training {
 
       dayCounter += 1;
       // at the end of plan.map adds 2d to counter, there should be 3 so it adds 1(2+1=3)
+      return 0;
+    });
+    return trainingPlan;
+  }
+
+  get reschedule() {
+    const trainingPlan = [];
+    const currentDate = new Date();
+    let dayCounter = 0;
+    this.createdPlan.map((plan) => {
+      plan.map((day) => {
+        const newDay = day;
+        newDay.date = format(addDays(currentDate, dayCounter), 'MM/dd/yyyy');
+        trainingPlan.push(newDay);
+        dayCounter += 2;
+        return 0;
+      });
+
+      dayCounter += 1;
       return 0;
     });
     return trainingPlan;

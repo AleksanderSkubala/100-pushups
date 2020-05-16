@@ -82,5 +82,9 @@ export default {
      top: 0;
      left: 0;
    }
+
+   @media (min-width: 1024px) {
+     margin-top: 5vh;
+   }
  }
 </style>
