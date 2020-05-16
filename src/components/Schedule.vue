@@ -16,7 +16,10 @@
         </tr>
       </tbody>
     </table>
-    <Button @click.native="deletePlan()" text="Delete your training plan"></Button>
+    <div class="buttons">
+      <Button @click.native="markAsDone()" text="Check this training as done"></Button>
+      <Button @click.native="deletePlan()" text="Delete your training plan"></Button>
+    </div>
   </div>
 </template>
 
@@ -40,6 +43,13 @@ export default {
       localStorage.clear();
       this.$emit('deletePlan');
       window.location = '';
+    },
+    markAsDone() {
+      if (this.training) {
+        this.plan[this.plan.indexOf(this.training)].done = true;
+        this.training = '';
+        localStorage.setItem('trainingPlan', JSON.stringify(this.plan));
+      }
     },
     getRest() {
       switch (this.plan.indexOf(this.training)) {
@@ -65,8 +75,9 @@ export default {
   },
   mounted() {
     if (this.plan) {
-      const today = format(new Date('05/18/2020'), 'MM/dd/yyyy');
-      this.training = this.plan.find((object) => object.date === today);
+      // const today = format(new Date('05/18/2020'), 'MM/dd/yyyy');
+      const today = format(new Date(), 'MM/dd/yyyy');
+      this.training = this.plan.find((object) => object.date === today && object.done);
     }
   },
 };
@@ -90,9 +101,19 @@ export default {
       }
     }
 
+    .buttons {
+      margin-top: 30px;
 
-    button {
-      margin-top: 25px;
+      button:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .buttons button:not(:first-child) {
+        margin-top: unset;
+        margin-left: 15px;
+      }
     }
   }
 </style>
