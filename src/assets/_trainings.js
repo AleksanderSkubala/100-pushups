@@ -151,6 +151,82 @@ const trainings = [
       reps: [23, 28, 22, 22, 25],
     },
   ],
+  [
+    {
+      day: 1,
+      plan: 4,
+      done: false,
+      reps: [14, 18, 14, 14, 20],
+    },
+    {
+      day: 2,
+      plan: 4,
+      done: false,
+      reps: [20, 25, 15, 15, 23],
+    },
+    {
+      day: 3,
+      plan: 4,
+      done: false,
+      reps: [20, 27, 18, 18, 25],
+    },
+    {
+      day: 4,
+      plan: 4,
+      done: false,
+      reps: [21, 25, 21, 21, 27],
+    },
+    {
+      day: 5,
+      plan: 4,
+      done: false,
+      reps: [25, 29, 25, 25, 30],
+    },
+    {
+      day: 6,
+      plan: 4,
+      done: false,
+      reps: [29, 33, 29, 29, 33],
+    },
+  ],
+  [
+    {
+      day: 1,
+      plan: 5,
+      done: false,
+      reps: [2, 3, 2, 2, 3],
+    },
+    {
+      day: 2,
+      plan: 5,
+      done: false,
+      reps: [3, 4, 2, 3, 4],
+    },
+    {
+      day: 3,
+      plan: 5,
+      done: false,
+      reps: [4, 5, 4, 4, 5],
+    },
+    {
+      day: 4,
+      plan: 5,
+      done: false,
+      reps: [5, 6, 4, 4, 6],
+    },
+    {
+      day: 5,
+      plan: 5,
+      done: false,
+      reps: [5, 6, 4, 4, 7],
+    },
+    {
+      day: 6,
+      plan: 5,
+      done: false,
+      reps: [5, 7, 5, 5, 7],
+    },
+  ],
 ];
 
 export default trainings;
